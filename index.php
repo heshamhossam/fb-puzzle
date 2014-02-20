@@ -1,33 +1,3 @@
-<?php
-    require 'server/fb-php-sdk/facebook.php';
-
-    $app_id = '230589470458758';
-    $app_secret = 'ace894623603496b396ffe1678247b00';
-    $app_namespace = 'hesham-puzzle';
-    $app_url = 'https://apps.facebook.com/' . $app_namespace . '/';
-    $scope = 'email,publish_actions';
-
-    // Init the Facebook SDK
-    $facebook = new Facebook(array(
-         'appId'  => $app_id,
-         'secret' => $app_secret,
-));
-
-// Get the current user
-$user = $facebook->getUser();
-
-// If the user has not installed the app, redirect them to the Login Dialog
-if (!$user) {
-        $loginUrl = $facebook->getLoginUrl(array(
-        'scope' => $scope,
-        'redirect_uri' => $app_url,
-        ));
-
-        print('<script> top.location.href=\'' . $loginUrl . '\'</script>');
-}
-?>
-
-
 <!DOCTYPE html>
 <html>
   <head>
